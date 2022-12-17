@@ -14,7 +14,7 @@ Pada penelitian ini nantinya akan terdiri dari 2 langkah utama yaitu perancangan
 
 \subsubsection{Perangkat Lunak}
 
-\begin{figure}
+\begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=1\linewidth]{gambar/gambar3.1}
 	\caption{Blok Diagram Perangkat Lunak}
@@ -22,18 +22,19 @@ Pada penelitian ini nantinya akan terdiri dari 2 langkah utama yaitu perancangan
 \end{figure}
 
 \subsubsubsection{Dataset}
-Pada tahapan dataset disini akan dilakukan mulai dari pengambilan data-data yang disini nantinya akan berupa gambar/citra sampai dengan menyeleksi gambar tersebut dan siap melanjutkan ke tahapan selanjutnya.
+Pada tahapan dataset disini akan dilakukan mulai dari pengambilan data-data yang disini nantinya akan berupa gambar/citra sampai dengan menyeleksi citra tersebut dan siap melanjutkan ke tahapan selanjutnya.
 
 \paragraph{Input Citra}
 Pada dasarnya untuk mendeteksi suatu pose atau gerakan dari tangan membutuhkan untuk menemukan bagian tangan pada setiap Frame dan kemudian menganalisa pose atau gerakan tangan tersebut. Kamera digunakan untuk mendapatkan pose dari tangan pada setiap frame yang akan digunakan oleh user sebagai input untuk menentukan perintah. Dari input kamera ini yang nantinya akan digunakan untuk mendeteksi adanya tangan pada frame menggunakan Mediapipe.
 
-\paragraph{Pose Estimation}
-Mediapipe pada tangan memiliki 21 titik keypoint pada tangan. Setiap keypoint memiliki atribut posisi x, y, dan z. Data dari setiap titik yang nantinya akan diolah untuk menentukan gerakan dari tangan. Data koordinat dari setiap keypoint yang telah di dapatkan akan dilakukan normalisasi. Koordinat yang telah didapatkan merupakan koordinat dari setiap titik terhadap titik nol citra. Maka diperlukan perubahan dimana  koordinat setiap titik dirubah menjadi terhadap titik 0 keypoint. Jadi setiap ada perubahan posisi pada tangan masih dapat terukur posisinya terhadap titik 0 keypoint. Untuk jarak antar keypoint akan di scaling menggunakan jarak titik 0 ke titik 5 untuk menangani masalah dekat atau jauhnya tangan dari kamera. Untuk sudut pada tangan akan ada 3 titik dimana dianggap tidak bisa berotasi atau memilki sudut 0° yaitu pada titik 0, 5, dan 17. Data-data yang terlah dinormalisasi ini yang akan kemudian di simpan untuk dapat dideteksi.
+\paragraph{Deteksi Tangan}
+Mediapipe pada tangan memiliki 21 titik keypoint pada tangan. Setiap keypoint memiliki atribut posisi x, y, dan z. Data dari setiap titik yang nantinya akan diolah untuk menentukan gerakan dari tangan. Data koordinat dari setiap keypoint yang telah di dapatkan akan dilakukan normalisasi. Koordinat yang telah didapatkan merupakan koordinat dari setiap titik terhadap titik nol citra. Maka diperlukan perubahan dimana  koordinat setiap titik dirubah menjadi terhadap titik 0 keypoint. Jadi setiap ada perubahan posisi pada tangan masih dapat terukur posisinya terhadap titik 0 keypoint. Untuk jarak antar keypoint akan di scaling menggunakan jarak titik 0 ke titik 5 untuk menangani masalah dekat atau jauhnya tangan dari kamera. Untuk sudut pada tangan akan ada 3 titik dimana dianggap tidak bisa berotasi atau memilki sudut 0° yaitu pada titik 0, 5, dan 17. Dari titik - titik yang diketahui akan dihubungkan hingga berbentuk rangka dari tangan. Dari koordinat pada setiap titik tersebut akan dicari nilai terkecil terhadap sumbu x dan sumbu y pada citra. Dari nilai terkecil tersebut akan dibuatkan sebuah kotak untuk menandai bahwa yang didalam kotak tersebut adalah rangka tangan yang telah terdeteksi oleh mediapipe. 
 
-\paragraph{Pose Extraction}
-Hasil dari pendeteksian tangan menggunakan mediapipe akan diletakkan pada citra berwarna hitam.dan kemudian disimpan.
+\paragraph{Ekstraksi Citra}
+Tangan yang telah terdeteksi oleh mediapipe dan telah terdapat rangkanya pada setiap frame akan disimpan untuk menjadi dataset. Citra yang disimpan akan ada 2 macam yaitu citra yang ditangkap oleh kamera dan terdapat ditangannya dan juga terdapat citra dengan latar berwarna hitam dengan rangka tangan dari mediapipe didalamnya. Citra berwana hitam sebelum disimpan akan dipotong sesuai luas dari kotak yang diambil dari koordinat terkecil dari 21 titik mediapipe. Ukuran dari citra yang telah dipotong akan diubah menjadi 256 {\textit{pixels}} secara vertikal dan 256 {\textit{pixels}} secara horizontal. Setelah ukuran citra hitam ini diubah menjadi 256 x 256 {\textit{pixels}}, citra tersebut akan disimpan dalam bentuk file png.
 
-\subsubsubsection{Pose}
+\subsubsubsection{Gestur Tangan}
+Gestur tangan yang akan digunakan nantinya akan ada 5 getur yang akan sebagai simbol dari diam, maju, mundur, belok kanan, dan belok kiri. Diam akan disimbolkan dengan membuka telapak tangan serta meluruskan semua jari tangan. 
 
 
 \subsubsubsection{Classification}
@@ -44,7 +45,7 @@ Dari data yang telah di klasifikasikan dan sudah didapatkan gesturnya maka gestu
 
 \subsubsection{Perangkat Keras}
 
-\begin{figure}
+\begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=0.7\linewidth]{"gambar/gambar perangkat keras"}
 	\caption{Blok Diagram Perangkat Keras}
