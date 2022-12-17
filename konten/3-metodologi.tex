@@ -18,11 +18,18 @@ Pada penelitian ini nantinya akan terdiri dari 2 langkah utama yaitu perancangan
 	\centering
 	\includegraphics[width=1\linewidth]{gambar/gambar3.1}
 	\caption{Blok Diagram Perangkat Lunak}
-	\label{fig:Gambar 3.1}
+	\label{fig:gambar31}
 \end{figure}
 
 \subsubsubsection{Dataset}
 Pada tahapan dataset disini akan dilakukan mulai dari pengambilan data-data yang disini nantinya akan berupa gambar/citra sampai dengan menyeleksi citra tersebut dan siap melanjutkan ke tahapan selanjutnya.
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.7\linewidth]{gambar/Dataset.png}
+	\caption{Blok Diagram Pembuatan Dataset}
+	\label{fig:gambar32}
+\end{figure}
 
 \paragraph{Input Citra}
 Pada dasarnya untuk mendeteksi suatu pose atau gerakan dari tangan membutuhkan untuk menemukan bagian tangan pada setiap Frame dan kemudian menganalisa pose atau gerakan tangan tersebut. Kamera digunakan untuk mendapatkan pose dari tangan pada setiap frame yang akan digunakan oleh user sebagai input untuk menentukan perintah. Dari input kamera ini yang nantinya akan digunakan untuk mendeteksi adanya tangan pada frame menggunakan Mediapipe.
@@ -34,7 +41,7 @@ Mediapipe pada tangan memiliki 21 titik keypoint pada tangan. Setiap keypoint me
 Tangan yang telah terdeteksi oleh mediapipe dan telah terdapat rangkanya pada setiap frame akan disimpan untuk menjadi dataset. Citra yang disimpan akan ada 2 macam yaitu citra yang ditangkap oleh kamera dan terdapat ditangannya dan juga terdapat citra dengan latar berwarna hitam dengan rangka tangan dari mediapipe didalamnya. Citra berwana hitam sebelum disimpan akan dipotong sesuai luas dari kotak yang diambil dari koordinat terkecil dari 21 titik mediapipe. Ukuran dari citra yang telah dipotong akan diubah menjadi 256 {\textit{pixels}} secara vertikal dan 256 {\textit{pixels}} secara horizontal. Setelah ukuran citra hitam ini diubah menjadi 256 x 256 {\textit{pixels}}, citra tersebut akan disimpan dalam bentuk file png.
 
 \subsubsubsection{Gestur Tangan}
-Gestur tangan yang akan digunakan nantinya akan ada 5 getur yang akan sebagai simbol dari diam, maju, mundur, belok kanan, dan belok kiri. Diam akan disimbolkan dengan membuka telapak tangan serta meluruskan semua jari tangan. 
+Gestur tangan yang akan digunakan nantinya akan ada 5 getur yang akan sebagai simbol dari diam, maju, mundur, belok kanan, dan belok kiri. Diam akan disimbolkan dengan membuka telapak tangan serta meluruskan semua jari tangan. Maju akan disimbolkan dengan tangan mengepal 
 
 
 \subsubsubsection{Classification}
@@ -49,15 +56,17 @@ Dari data yang telah di klasifikasikan dan sudah didapatkan gesturnya maka gestu
 	\centering
 	\includegraphics[width=0.7\linewidth]{"gambar/gambar perangkat keras"}
 	\caption{Blok Diagram Perangkat Keras}
-	\label{fig:gambar-perangkat-keras}
+	\label{fig:gambar33}
 \end{figure}
 
 \subsubsubsection{Laptop}
-Laptop disini nantinya akan digunakan untuk menjalankan program perangkat lunak yang telah dikembangnkan untuk dapat menklasifikasikan tangan yang terdeteksi dan juga kamera yang terdapat pada laptop ini juga yang nantinya akan digunakan sebagai input gambar/citra. 
+Laptop disini nantinya akan digunakan untuk menjalankan program perangkat lunak yang telah dikembangnkan untuk dapat menklasifikasikan tangan yang terdeteksi dan juga kamera yang terdapat pada laptop ini juga yang nantinya akan digunakan sebagai input gambar/citra.
 
 \subsubsubsection{Bluetooth}
+Hasil klasifikasi yang ada pada laptop akan dikirim ke mobil robot untuk dapat memberikannya perintah sesuia dari hasil klasifikasi. Menghubungkan laptop dan robot ini akan menggunakan modul \textit{bluetooth} yang akan dihubungkan dengan mobil robot dikarenakan mobil robot yang akan digunakan masih belum mempunyai modul \textit{bluetooth}. 
 
-\subsubsubsection{Mobil}
+\subsubsubsection{Mobil Robot}
+Pada bagian mobil robot ini terdapat beberapa komponen elektronik yang terpasang, diantaranya sebuatu mikrokontroller Arduino uno dan mikrokontroller Arduino nano , 2 buah .FC-03 L298N motor driver dual, modul charger Tp 4056, dan modul bluetooth HC-05. Komponen mekanik terdapat 4 buah roda, 4 buah gearbox motor, dan 1 buah chassis. \parencite*{JurnalElectroLuecat}
 
 \subsection{Bahan dan peralatan yang digunakan}
 
