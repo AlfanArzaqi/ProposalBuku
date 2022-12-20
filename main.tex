@@ -7,13 +7,19 @@
 % Pengaturan ukuran spasi
 \usepackage[singlespacing]{setspace}
 
+% Pengaturan caption untuk tabel
+\usepackage{caption}
+
 % Judul dokumen
 \title{Proposal Tugas Akhir ITS}
 \author{Musk, Elon Reeve}
 
+% Pengaturan format bahasa
+% \usepackage[indonesian]{babel}
+%   \addto{\captionsindonesian}{\renewcommand{\bibname}{Daftar Pustaka}}
+
 % Pengaturan detail pada file PDF
 \usepackage[pdfauthor={\@author},bookmarksnumbered,pdfborder={0 0 0}]{hyperref}
-
 
 % Pengaturan ukuran indentasi
 \setlength{\parindent}{2em}
@@ -39,6 +45,20 @@
 \usepackage{tabularx} % Untuk mengatur kolom, seperti grid pada CSS
 \usepackage{wrapfig}
 
+% Pengaturan format daftar isi, daftar gambar, dan daftar tabel
+\usepackage{tocloft}
+\setlength{\cftsecindent}{0cm}
+\setlength{\cftsubsecindent}{0.5cm}
+\setlength{\cftbeforechapskip}{3pt}
+\renewcommand{\cftsecfont}{\normalfont\bfseries}% membuat judul section pada daftar isi menjadi bold
+\renewcommand{\cftsecpagefont}{\normalfont\bfseries}% membuat nomor section daftar isi menjadi bold
+\renewcommand{\cfttoctitlefont}{\hfill\Large\bfseries} % command untuk membuat heading bold dan besar
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftloftitlefont}{\hfill\Large\bfseries}
+\renewcommand{\cftafterloftitle}{\hfill}
+\renewcommand{\cftlottitlefont}{\hfill\Large\bfseries}
+\renewcommand{\cftafterlottitle}{\hfill}
+
 % Definisi untuk "Hati ini sengaja dikosongkan"
 \patchcmd{\cleardoublepage}{\hbox{}}{
   \thispagestyle{empty}
@@ -63,8 +83,7 @@
 \titleformat*{\subsection}{\normalsize\bfseries}
 \titlespacing{\section}{0ex}{3ex}{1.5ex}
 \titlespacing{\subsection}{0ex}{3ex}{1.5ex}
-\titlespacing{\subsubsection}{0ex}{3ex}{1.5ex}
-\titlespacing{\paragraph}{0ex}{3ex}{1.5ex}
+\titlespacing{\subsubsection}{0ex}{0.5ex}{0ex}
 \setcounter{secnumdepth}{3} % Untuk memberi penomoran pada \subsubsection
 
 \counterwithin{figure}{section}
@@ -77,7 +96,7 @@
 % Menambahkan resource daftar pustaka
 \addbibresource{pustaka/pustaka.bib}
 
-% Menambahkan sub sub subsection
+% % Menambahkan sub sub subsection
 % \usepackage{titlesec}
 % \usepackage{hyperref}
 % \titleclass{\subsubsubsection}{straight}[\subsection]
