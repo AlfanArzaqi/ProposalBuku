@@ -48,8 +48,12 @@
 % Pengaturan format daftar isi, daftar gambar, dan daftar tabel
 \usepackage{tocloft}
 \setlength{\cftsecindent}{0cm}
-\setlength{\cftsubsecindent}{0.5cm}
-\setlength{\cftbeforechapskip}{3pt}
+\setlength{\cftsubsecindent}{2em}
+\setlength{\cftbeforechapskip}{1.5ex}
+\setlength{\cftbeforesecskip}{1.5ex}
+\setlength{\cftbeforetoctitleskip}{0cm}
+\setlength{\cftbeforeloftitleskip}{0cm}
+\setlength{\cftbeforelottitleskip}{0cm}
 \renewcommand{\cftsecfont}{\normalfont\bfseries}% membuat judul section pada daftar isi menjadi bold
 \renewcommand{\cftsecpagefont}{\normalfont\bfseries}% membuat nomor section daftar isi menjadi bold
 \renewcommand{\cfttoctitlefont}{\hfill\Large\bfseries} % command untuk membuat heading bold dan besar
@@ -78,13 +82,15 @@
 % Pengaturan format judul bab
 \usepackage{titlesec}
 \renewcommand{\thesection}{\arabic{section}}
-\titleformat{\chapter}[display]{\bfseries\Large}{BAB \centering\Roman{chapter}}{0ex}{\vspace{0ex}\centering}
+\titleformat{\chapter}[display]{\bfseries\Large}{BAB \centering\Roman{chapter}}{0ex}{\vspace{0ex}\centering}{\vspace{0ex}}
 \titleformat*{\section}{\large\bfseries}
 \titleformat*{\subsection}{\normalsize\bfseries}
+\titlespacing*{\chapter}{0pt}{4ex}{0pt}
 \titlespacing{\section}{0ex}{3ex}{1.5ex}
 \titlespacing{\subsection}{0ex}{3ex}{1.5ex}
 \titlespacing{\subsubsection}{0ex}{0.5ex}{0ex}
-\setcounter{secnumdepth}{3} % Untuk memberi penomoran pada \subsubsection
+\setcounter{section}{0}
+\setcounter{secnumdepth}{5} % Untuk memberi penomoran pada \subsubsection
 
 \counterwithin{figure}{section}
 \counterwithin{table}{section}
@@ -139,16 +145,21 @@
   \newcommand\covercontents{sampul/konten-id.tex}
   \input{sampul/sampul-luar.tex}
 
-  % Sampul Bahasa Inggris
-  \renewcommand\covercontents{sampul/konten-en.tex}
-  \input{sampul/sampul-luar.tex}
+  % % Sampul Bahasa Inggris
+  % \renewcommand\covercontents{sampul/konten-en.tex}
+  % \input{sampul/sampul-luar.tex}
 
   % Lembar pengesahan
+  \addcontentsline{toc}{chapter}{LEMBAR PENGESAHAN}
   \input{lainnya/lembar-pengesahan.tex}
   \newpage
 
-  % Lembar pengesahan
-  \input{lainnya/lembar-pengesahan-en.tex}
+  % % Lembar pengesahan
+  % \input{lainnya/lembar-pengesahan-en.tex}
+  % \newpage
+
+  % Abstrak
+  \input{lainnya/abstrak.tex}
   \newpage
 
   \newgeometry{top=0cm}

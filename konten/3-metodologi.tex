@@ -2,7 +2,7 @@
 
 % Ubah konten-konten berikut sesuai dengan isi dari metodologi
 
-\subsection{Metode yang digunakan}
+\subsection{Metode yang Digunakan}
 
 Pada penelitian ini nantinya akan terdiri dari 2 langkah utama yaitu perancangan pada perangkat lunak (Softrware) dan perancangan pada perangkat keras (Hardware) :
 %\begin{figure}[H]
@@ -28,7 +28,7 @@ Pada tahap ini akan dilakukan metode untuk membuat kendali pada mobil robot pada
 
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.7\linewidth]{gambar/Dataset.png}
+	\includegraphics[width=1\linewidth]{gambar/Dataset.png}
 	\caption{Blok Diagram Pembuatan Dataset}
 	\label{fig:gambar32}
 \end{figure}
@@ -41,14 +41,15 @@ Pada tahap ini akan dilakukan metode untuk membuat kendali pada mobil robot pada
   Untuk mendeteksi tangan pada frame-frame yang telah ditangkap oleh kamera akan digunakan \textit{framework} Mediapipe. Mendeteksi tangan akan dimulai dari mendeteksi telapak tangan yang disebut sebagai \textit{palm detection model}. Setelah melakukan pendeteksian telapak tangan pada keseluruhan gambar maka berikutnya yaitu mendeteksi 21 titik \textit{keypoint} dalam wilayah tangan menggunakan regresi. Setelah 21 titik \textit{keypoint} terdeteksi maka langkah selanjutnya yaitu menghubungkan titik-titik yang telah terdeteksi sehingga dapat membentuk seperti rangka tangan yang ditunjukkan oleh Gambar \ref*{fig:tangan}.
 
   \item Ekstraksi Citra \par
-  Tangan yang telah terdeteksi oleh mediapipe dan telah terdapat rangkanya pada setiap frame akan disimpan untuk menjadi dataset. Citra yang disimpan akan ada 2 macam yaitu citra yang ditangkap oleh kamera dan terdapat ditangannya dan juga terdapat citra dengan latar berwarna hitam dengan rangka tangan dari mediapipe didalamnya. Citra berwana hitam sebelum disimpan akan dipotong sesuai luas dari kotak yang diambil dari koordinat terkecil dari 21 titik mediapipe. Ukuran dari citra yang telah dipotong akan diubah menjadi 128 {\textit{pixels}} secara vertikal dan 128 {\textit{pixels}} secara horizontal. Setelah ukuran citra hitam ini diubah menjadi 128 $\times$ 128 {\textit{pixels}}, citra tersebut akan disimpan dalam bentuk file png.
+  Tangan yang telah terdeteksi oleh mediapipe dan telah terdapat rangkanya pada setiap frame akan disimpan untuk menjadi dataset. Citra yang disimpan akan ada 2 macam yaitu citra yang ditangkap oleh kamera dan terdapat ditangannya dan juga terdapat citra dengan latar berwarna hitam dengan rangka tangan dari mediapipe didalamnya. Citra berwana hitam sebelum disimpan akan dipotong sesuai luas dari kotak yang diambil dari koordinat terkecil dari 21 titik mediapipe. Citra yang telah dipotong akan di ubah ukurannya.
+% Ukuran dari citra yang telah dipotong akan diubah menjadi 128 {\textit{pixels}} secara vertikal dan 128 {\textit{pixels}} secara horizontal. Setelah ukuran citra hitam ini diubah menjadi 128 $\times$ 128 {\textit{pixels}}, citra tersebut akan disimpan dalam bentuk file png.
 \end{enumerate}
 
-  \item Pose tangan \par
+  \item Pose Tangan \par
   Gestur tangan yang akan digunakan nantinya akan ada 5 getur yang akan sebagai simbol dari diam, maju, mundur, belok kanan, dan belok kiri. Diam akan disimbolkan dengan membuka telapak tangan serta meluruskan semua jari tangan. Maju akan disimbolkan dengan tangan mengepal. Mundur akan disimbolkan dengan meluruskan jari telunjuk, tengah, dan manis namun mengepalkan ibu jari dan jari kelingking. Belok kanan akan disimbolkan dengan meluruskan ibu jari dan mengepalkan semua jari kecuali ibu jari. Belok kiri akan disimbolkan dengan meluruskan jari kelingking dan mengepalkan semua jari kecuali jari kelingking.
   
   \item Klasifikasi \par
-  Data yang sudah didapatkan nantinya akan di inputkan ke dalam perhitungan menggunakan machine learning. Data yang telah diinputkan nantinya akan dilabeli untuk ada diklasifikasikan dan digunakan untuk memberikan action selanjutnya. Dari hasil kalsifikasi nantinya akan disimpan sebagai model yang nantinya akan digunakan untuk mendeteksi citra yang akan datang
+  Data yang sudah didapatkan nantinya akan di inputkan ke dalam perhitungan menggunakan machine learning. Data yang telah diinputkan nantinya akan dilabeli untuk diklasifikasikan dan digunakan untuk memberikan action selanjutnya. Dari hasil kalsifikasi nantinya akan disimpan sebagai model yang nantinya akan digunakan untuk mendeteksi citra yang akan datang. Proses kalsifikasi akan menggunakan CNN dalam melakukan training dan akan menggunakan citra yang sudah disimpan dari tahapan dataset. 
   
   \item Robot \par
   Dari data yang telah di klasifikasikan dan sudah didapatkan gesturnya maka gestur tersebut akan diterjemahkan ke dalam suatu perintah untuk dapat menggerakkan mobil robot. Robot akan menerima data dari hasil klasifikasi dan selanjutnya akan bergerak sesuai data yang diberikan. Gerakan robot akan diatur melalui arah dan kecepatan putaran pada roda. Robot akan berjalan maju jikalau arah dan kecepatan putaran roda bernilai sama dan akan berbelok bilah salah satu dari arah dan kecepatan putaran berbeda.
@@ -58,7 +59,7 @@ Pada tahap ini akan dilakukan metode untuk membuat kendali pada mobil robot pada
 Pada tahap ini akan dilakukan metode untuk membuat kendali pada robot dari sisi pernagkat keras. Perangkat yang akan digunakan yaitu Laptop, modul \textit{bluetooth}, dan robot. 
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.7\linewidth]{"gambar/gambar perangkat keras"}
+	\includegraphics[width=1\linewidth]{"gambar/gambar perangkat keras"}
 	\caption{Blok Diagram Perangkat Keras}
 	\label{fig:gambar33}
 \end{figure}
@@ -74,10 +75,10 @@ Pada tahap ini akan dilakukan metode untuk membuat kendali pada robot dari sisi 
   Pada bagian mobil robot ini terdapat beberapa komponen elektronik yang terpasang, diantaranya sebuatu mikrokontroller Arduino uno dan mikrokontroller Arduino nano , 2 buah .FC-03 L298N motor driver dual, modul charger Tp 4056, dan modul bluetooth HC-05. Komponen mekanik terdapat 4 buah roda, 4 buah gearbox motor, dan 1 buah chassis.
 \end{enumerate}
 
-\subsection{Urutan pelaksanaan penelitian}
-
+\subsection{Urutan Pelaksanaan Penelitian} 
+Pada penelitian ini akan ada beberapa tahapan, dimulai dari pengambilan dan pemrosesan dataset hingga pada pengujian dan analisa. Berikut rencana waktu yang akan dibutuhkan dalam penelitian ini :
 % Ubah tabel berikut sesuai dengan isi dari rencana kerja
-\begin{table}[!h]
+\begin{table}[!htbp]
   \caption{Urutan pelaksanaan penelitian}
   \begin{tabular}{|c|cccccccccccccccc}
   \hline
