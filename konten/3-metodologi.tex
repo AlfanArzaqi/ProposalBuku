@@ -1,8 +1,8 @@
-\section{METODOLOGI}
+\chapter{METODOLOGI}
 
 % Ubah konten-konten berikut sesuai dengan isi dari metodologi
 
-\subsection{Metode yang Digunakan}
+\section{Metode yang Digunakan}
 
 Pada penelitian ini nantinya akan terdiri dari 2 langkah utama yaitu perancangan pada perangkat lunak (Softrware) dan perancangan pada perangkat keras (Hardware) :
 %\begin{figure}[H]
@@ -12,7 +12,7 @@ Pada penelitian ini nantinya akan terdiri dari 2 langkah utama yaitu perancangan
 %	\label{fig:blokdiagram}
 %\end{figure}
 
-\subsubsection{Perangkat Lunak}
+\subsection{Perangkat Lunak}
 Pada tahap ini akan dilakukan metode untuk membuat kendali pada mobil robot pada sisi perangkat lunak. Perangkat lunak ini akan dimulai dari pembuatan dataset dilanjutkan ke pose. Setelah pose akan dilanjutkan kepada tahapan klasifikasi dimana pada tahapan ini akan dilakukan pembelajaran mesin untuk dapat mengenali pose yang diberikan. Setelah tahap klasifikasi akan dilakukan tahap pembuatan program pada robot untuk dapat memahami data yang diterima dari tahap klasifikasi.
 
 \begin{figure}[!h]
@@ -22,8 +22,7 @@ Pada tahap ini akan dilakukan metode untuk membuat kendali pada mobil robot pada
 	\label{fig:gambar31}
 \end{figure}
 
-\begin{enumerate}
-  \item Dataset \par
+\subsubsection{Dataset}
   Pada tahapan dataset disini akan dilakukan mulai dari pengambilan data-data yang disini nantinya akan berupa gambar/citra sampai dengan menyeleksi citra tersebut dan siap melanjutkan ke tahapan selanjutnya.
 
 \begin{figure}[!h]
@@ -36,7 +35,7 @@ Pada tahap ini akan dilakukan metode untuk membuat kendali pada mobil robot pada
 \begin{enumerate}
   \item Input Citra \par
   Pada dasarnya untuk mendeteksi suatu pose atau gerakan dari tangan membutuhkan untuk menemukan bagian tangan pada setiap Frame dan kemudian menganalisa pose atau gerakan tangan tersebut. Kamera digunakan untuk mendapatkan pose dari tangan pada setiap frame yang akan digunakan oleh user sebagai input untuk menentukan perintah. Dari input kamera ini yang nantinya akan digunakan untuk mendeteksi adanya tangan pada frame menggunakan Mediapipe.
-  \item Deteksi Tangan \par
+  \item Estimasi Pose \par
   %Mediapipe pada tangan memiliki 21 titik keypoint pada tangan. Setiap keypoint memiliki atribut posisi x, y, dan z. Data dari setiap titik yang nantinya akan diolah untuk menentukan gerakan dari tangan. Data koordinat dari setiap keypoint yang telah di dapatkan akan dilakukan normalisasi. Koordinat yang telah didapatkan merupakan koordinat dari setiap titik terhadap titik nol citra. Maka diperlukan perubahan dimana  koordinat setiap titik dirubah menjadi terhadap titik 0 keypoint. Jadi setiap ada perubahan posisi pada tangan masih dapat terukur posisinya terhadap titik 0 keypoint. Untuk jarak antar keypoint akan di scaling menggunakan jarak titik 0 ke titik 5 untuk menangani masalah dekat atau jauhnya tangan dari kamera. Untuk sudut pada tangan akan ada 3 titik dimana dianggap tidak bisa berotasi atau memilki sudut 0° yaitu pada titik 0, 5, dan 17. Dari titik - titik yang diketahui akan dihubungkan hingga berbentuk rangka dari tangan. Dari koordinat pada setiap titik tersebut akan dicari nilai terkecil terhadap sumbu x dan sumbu y pada citra. Dari nilai terkecil tersebut akan dibuatkan sebuah kotak untuk menandai bahwa yang didalam kotak tersebut adalah rangka tangan yang telah terdeteksi oleh mediapipe. 
   Untuk mendeteksi tangan pada frame-frame yang telah ditangkap oleh kamera akan digunakan \textit{framework} Mediapipe. Mendeteksi tangan akan dimulai dari mendeteksi telapak tangan yang disebut sebagai \textit{palm detection model}. Setelah melakukan pendeteksian telapak tangan pada keseluruhan gambar maka berikutnya yaitu mendeteksi 21 titik \textit{keypoint} dalam wilayah tangan menggunakan regresi. Setelah 21 titik \textit{keypoint} terdeteksi maka langkah selanjutnya yaitu menghubungkan titik-titik yang telah terdeteksi sehingga dapat membentuk seperti rangka tangan yang ditunjukkan oleh Gambar \ref*{fig:tangan}.
 
@@ -45,25 +44,24 @@ Pada tahap ini akan dilakukan metode untuk membuat kendali pada mobil robot pada
 % Ukuran dari citra yang telah dipotong akan diubah menjadi 128 {\textit{pixels}} secara vertikal dan 128 {\textit{pixels}} secara horizontal. Setelah ukuran citra hitam ini diubah menjadi 128 $\times$ 128 {\textit{pixels}}, citra tersebut akan disimpan dalam bentuk file png.
 \end{enumerate}
 
-  \item Pose Tangan \par
+\subsubsection{Pose Tangan}
   
   \begin{figure}[!h]
     \centering
-    \includegraphics[width=0.7\linewidth]{gambar/pose.png}
+    \includegraphics[width=1\linewidth]{gambar/pose.png}
     \caption{Pose tangan yang digunakan}
     \label{fig:gambarpose}
   \end{figure}
 
   Pose tangan yang akan digunakan nantinya akan ada 5 pose yang akan sebagai simbol dari diam, maju, mundur, belok kanan, dan belok kiri. Diam akan disimbolkan dengan membuka telapak tangan serta meluruskan semua jari tangan. Maju akan disimbolkan dengan tangan mengepal. Mundur akan disimbolkan dengan meluruskan jari telunjuk, tengah, dan manis namun mengepalkan ibu jari dan jari kelingking. Belok kanan akan disimbolkan dengan meluruskan ibu jari dan mengepalkan semua jari kecuali ibu jari. Belok kiri akan disimbolkan dengan meluruskan jari kelingking dan mengepalkan semua jari kecuali jari kelingking.
 
-  \item Klasifikasi \par
+\subsubsection{Klasifikasi}
   Data yang sudah didapatkan nantinya akan di inputkan ke dalam perhitungan menggunakan machine learning. Data yang telah diinputkan nantinya akan dilabeli untuk diklasifikasikan dan digunakan untuk memberikan action selanjutnya. Dari hasil kalsifikasi nantinya akan disimpan sebagai model yang nantinya akan digunakan untuk mendeteksi citra yang akan datang. Proses kalsifikasi akan menggunakan CNN dalam melakukan training dan akan menggunakan citra yang sudah disimpan dari tahapan dataset. 
   
-  \item Robot \par
+\subsubsection{Robot}
   Dari data yang telah di klasifikasikan dan sudah didapatkan posenya maka pose tersebut akan diterjemahkan ke dalam suatu perintah untuk dapat menggerakkan mobil robot. Robot akan menerima data dari hasil klasifikasi dan selanjutnya akan bergerak sesuai data yang diberikan. Gerakan robot akan diatur melalui arah dan kecepatan putaran pada roda. Robot akan berjalan maju jikalau arah dan kecepatan putaran roda bernilai sama dan akan berbelok bilah salah satu dari arah dan kecepatan putaran berbeda.
-\end{enumerate}
 
-\subsubsection{Perangkat Keras}
+\subsection{Perangkat Keras}
 Pada tahap ini akan dilakukan metode untuk membuat kendali pada robot dari sisi pernagkat keras. Perangkat yang akan digunakan yaitu Laptop, modul \textit{bluetooth}, dan robot. 
 \begin{figure}[!h]
 	\centering
@@ -72,18 +70,22 @@ Pada tahap ini akan dilakukan metode untuk membuat kendali pada robot dari sisi 
 	\label{fig:gambar33}
 \end{figure}
 
-\begin{enumerate}
-  \item Laptop \par
+\subsubsection{Laptop}
   Laptop disini nantinya akan digunakan untuk menjalankan program perangkat lunak yang telah dikembangnkan untuk dapat menklasifikasikan tangan yang terdeteksi dan juga kamera yang terdapat pada laptop ini juga yang nantinya akan digunakan sebagai input gambar/citra.
 
-  \item \textit{Bluetooth} \par
+\subsubsection{\textit{Bluetooth}}
   Hasil klasifikasi yang ada pada laptop akan dikirim ke mobil robot untuk dapat memberikannya perintah sesuia dari hasil klasifikasi. Menghubungkan laptop dan robot ini akan menggunakan modul \textit{bluetooth} yang akan dihubungkan dengan mobil robot dikarenakan mobil robot yang akan digunakan masih belum mempunyai modul \textit{bluetooth}. 
 
-  \item Robot \par
-  Pada bagian mobil robot ini terdapat beberapa komponen elektronik yang terpasang, diantaranya sebuatu mikrokontroller Arduino uno dan mikrokontroller Arduino nano , 2 buah .FC-03 L298N motor driver dual, modul charger Tp 4056, dan modul bluetooth HC-05. Komponen mekanik terdapat 4 buah roda, 4 buah gearbox motor, dan 1 buah chassis.
-\end{enumerate}
+\subsubsection{Robot}
+  \begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{"gambar/robot"}
+    \caption{Robot yang digunakan \parencite{JurnalElectroLuecat}}
+    \label{fig:gambarrobot}
+  \end{figure}
+  Pada bagian mobil robot ini terdapat beberapa komponen elektronik yang terpasang, diantaranya sebuatu mikrokontroller Arduino uno dan mikrokontroller Arduino nano , 2 buah .FC-03 L298N motor driver dual, modul charger Tp 4056, dan modul bluetooth HC-05. Komponen mekanik terdapat 4 buah roda, 4 buah motor, dan 1 buah chassis.
 
-\subsection{Urutan Pelaksanaan Penelitian} 
+\section{Urutan Pelaksanaan Penelitian} 
 Pada penelitian ini akan ada beberapa tahapan, dimulai dari pengambilan dan pemrosesan dataset hingga pada pengujian dan analisa. Berikut rencana waktu yang akan dibutuhkan dalam penelitian ini :
 % Ubah tabel berikut sesuai dengan isi dari rencana kerja
 \begin{table}[!htbp]

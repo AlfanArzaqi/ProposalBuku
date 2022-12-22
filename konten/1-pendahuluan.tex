@@ -1,6 +1,6 @@
-\section{PENDAHULUAN}
+\chapter{PENDAHULUAN}
 
-\subsection{Latar Belakang}
+\section{Latar Belakang}
 
 % Ubah paragraf-paragraf berikut sesuai dengan latar belakang dari tugas akhir
 %Saat ini era Industry telah memasuki generasi keempat pada revolusi industri atau lebih dikenal dengan revolusi industri 4.0 yang di mana pada babak ini mensinergikan aspek fisik dengan digital atau biasa disebut dengan digitalisasi. Pemanfaatan babak keempat ini dapat dilihat dari adanya pemanfaatan kecerdasan buatan (artificial intelligence), robotika, dan kemampuan komputer belajar dari data (machine learning). Machine learning merupakan bagian dari AI (artificial intelligence) yang menggunakan statistic, dimana dengan metode ini memungkinkan mesin (komputer) untuk mengambil keputusan berdasarkan data. Algoritma machine learning dirancang agar dapat belajar dan kemampuannya meningkat seiring waktu ketika terdapat data baru tanpa diprogram secara eksplisit \parencite{Bukusakti}. Dengan menggunakan machine learning maka dapat mendigitalisasikan citra yang diambil dari webcam dan nantinya akan diambil sebagai data untuk diolah oleh komputer. Salah satu implementasi yaitu menangkap gestur tubuh. Gestur kumpulan dari pose yang digunakan untuk komunikasi non verbal dengan sikap yang dibuat tubuh atau gerakan dari tangan, wajah, atau anggota lain dari tubuh yang terlihat mengkomunikasikan pesan-pesan tertentu \parencite{gesturtangan}. Menggunkan teknologi machine learning maka gestur dari tubuh akan dapat diterjemahkan ke dalam logika pemrograman dengan begitu maka gestur tubuh ini nantinya akan dapat di implementasikan dalam banyak hal seperti membantu membenarkan pose berolahraga, menerjemahkan bahasa isyarat, dan menjadi sistem kendali pada robot. Perkembangan bidang robotika saat ini berkembang secara pesat, awalnya robot hanya dapat dikendalikan secara dekat, namun beberapa tahun berikutnya robot sudah bisa dikendalikan dengan jarak yang jauh dengan tanpa kabel atau wireless dan dikendalikan dengan remote control. Teknologi kendali robot telah dikembangkan yang dapat langsung bergerak sesuai dengan inputan dari gestur manusia. Terdapat penilitian tentang sistem kendali untuk mobil robot, namun penelitian ini menggunakan sensor accelerometer MPU-6050 yang diletakkan pada sarung tangan dan akan dipakai saat ingin mengendalikan mobil robot Arduino. Penelitian ini didapatkan tingkat akurasi 100\% dan hasil respon sensor terhadap mobil mampu
@@ -11,11 +11,11 @@ Pada saat ini perkembangan HCI cukup pesat yang diakibatkan dari perkembangan pa
  
 
 
-\subsection{Rumusan Masalah}
+\section{Rumusan Masalah}
 % Ubah paragraf berikut sesuai dengan rumusan masalah dari tugas akhir
-Berdasarkan latar belakang di atas, pada Tugas Akhir ini diajukan rancangan mendeteksi pose tangan dengan menggunakan Mediapipe dan diimplementasikan untuk mengendalikan mobil robot Arduino. Langkah pertama yaitu mengumpulkan dataset melalui ekstraksi citra dari webcam menggunakan Mediapipe. Kemudian dilakukan proses learning menggunakan machine learning serta pengujian akurasi deteski pose tangan. Setelah itu data pembacaan pose tangan tersebut akan dikirimkan kepada \textit{bluetooth} yang ada pada mobil dan akan diterjemahkan menjadi input perintah logika pemrograman untuk menentukan aksi gerakan robot.
+Berdasarkan latar belakang di atas, pada Tugas Akhir ini diajukan rancangan klasifikasi pose tangan menggunakan teknologi pada \textit{machine learning} dan diimplementasikan untuk mengendalikan \textit{mobile robot}.
 
-\subsection{Batasan Masalah atau Ruang Lingkup}
+\section{Batasan Masalah atau Ruang Lingkup}
 
 Dalam pembuatan Tugas Akhir ini, pembahasan masalah dibatasi beberapa hal berikut :
 \begin{enumerate}
@@ -25,7 +25,7 @@ Dalam pembuatan Tugas Akhir ini, pembahasan masalah dibatasi beberapa hal beriku
 	\item Pengujian yang dilakukan adalah pengujian akurasi klasifikasi pada pose tangan.
 \end{enumerate}
 
-\subsection{Tujuan}
+\section{Tujuan}
 
 % Ubah paragraf berikut sesuai dengan tujuan penelitian dari tugas akhir
 Berdasarkan latar belakang dan rumusan masalah diatas, mendapatkan tujuan pada Tugas Akhir ini sebaga berikut :
@@ -35,5 +35,5 @@ Berdasarkan latar belakang dan rumusan masalah diatas, mendapatkan tujuan pada T
 	\item Membuat sistem kendali untuk mobil robot arduino menggunakan pose tangan.
 \end{enumerate}
 
-\subsection{Manfaat}
+\section{Manfaat}
 Manfaat dari penelitian ini yaitu membuat kendali untuk \textit{mobile robot} berbasis pose tangan yang akurat dan dapat digunakan oleh masyarakat secara umum. Dari penelitian ini diharapkan dapat sebagai opsi lain dalam mengontrol robot yang lebih mudah dan tanpa alat lain.
