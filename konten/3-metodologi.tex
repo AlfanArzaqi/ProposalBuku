@@ -18,7 +18,7 @@ Pada tahap ini akan dilakukan metode untuk membuat kendali pada mobil robot pada
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=1\linewidth]{gambar/gambar3.1}
-	\caption{Blok Diagram Perangkat Lunak}
+	\caption{Blok diagram perangkat lunak}
 	\label{fig:gambar31}
 \end{figure}
 
@@ -28,8 +28,8 @@ Pada tahap ini akan dilakukan metode untuk membuat kendali pada mobil robot pada
 
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=1\linewidth]{gambar/Dataset.png}
-	\caption{Blok Diagram Pembuatan Dataset}
+	\includegraphics[width=0.7\linewidth]{gambar/Dataset.png}
+	\caption{Blok diagram pembuatan dataset}
 	\label{fig:gambar32}
 \end{figure}
 
@@ -46,21 +46,29 @@ Pada tahap ini akan dilakukan metode untuk membuat kendali pada mobil robot pada
 \end{enumerate}
 
   \item Pose Tangan \par
-  Gestur tangan yang akan digunakan nantinya akan ada 5 getur yang akan sebagai simbol dari diam, maju, mundur, belok kanan, dan belok kiri. Diam akan disimbolkan dengan membuka telapak tangan serta meluruskan semua jari tangan. Maju akan disimbolkan dengan tangan mengepal. Mundur akan disimbolkan dengan meluruskan jari telunjuk, tengah, dan manis namun mengepalkan ibu jari dan jari kelingking. Belok kanan akan disimbolkan dengan meluruskan ibu jari dan mengepalkan semua jari kecuali ibu jari. Belok kiri akan disimbolkan dengan meluruskan jari kelingking dan mengepalkan semua jari kecuali jari kelingking.
   
+  \begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{gambar/pose.png}
+    \caption{Pose tangan yang digunakan}
+    \label{fig:gambarpose}
+  \end{figure}
+
+  Pose tangan yang akan digunakan nantinya akan ada 5 pose yang akan sebagai simbol dari diam, maju, mundur, belok kanan, dan belok kiri. Diam akan disimbolkan dengan membuka telapak tangan serta meluruskan semua jari tangan. Maju akan disimbolkan dengan tangan mengepal. Mundur akan disimbolkan dengan meluruskan jari telunjuk, tengah, dan manis namun mengepalkan ibu jari dan jari kelingking. Belok kanan akan disimbolkan dengan meluruskan ibu jari dan mengepalkan semua jari kecuali ibu jari. Belok kiri akan disimbolkan dengan meluruskan jari kelingking dan mengepalkan semua jari kecuali jari kelingking.
+
   \item Klasifikasi \par
   Data yang sudah didapatkan nantinya akan di inputkan ke dalam perhitungan menggunakan machine learning. Data yang telah diinputkan nantinya akan dilabeli untuk diklasifikasikan dan digunakan untuk memberikan action selanjutnya. Dari hasil kalsifikasi nantinya akan disimpan sebagai model yang nantinya akan digunakan untuk mendeteksi citra yang akan datang. Proses kalsifikasi akan menggunakan CNN dalam melakukan training dan akan menggunakan citra yang sudah disimpan dari tahapan dataset. 
   
   \item Robot \par
-  Dari data yang telah di klasifikasikan dan sudah didapatkan gesturnya maka gestur tersebut akan diterjemahkan ke dalam suatu perintah untuk dapat menggerakkan mobil robot. Robot akan menerima data dari hasil klasifikasi dan selanjutnya akan bergerak sesuai data yang diberikan. Gerakan robot akan diatur melalui arah dan kecepatan putaran pada roda. Robot akan berjalan maju jikalau arah dan kecepatan putaran roda bernilai sama dan akan berbelok bilah salah satu dari arah dan kecepatan putaran berbeda.
+  Dari data yang telah di klasifikasikan dan sudah didapatkan posenya maka pose tersebut akan diterjemahkan ke dalam suatu perintah untuk dapat menggerakkan mobil robot. Robot akan menerima data dari hasil klasifikasi dan selanjutnya akan bergerak sesuai data yang diberikan. Gerakan robot akan diatur melalui arah dan kecepatan putaran pada roda. Robot akan berjalan maju jikalau arah dan kecepatan putaran roda bernilai sama dan akan berbelok bilah salah satu dari arah dan kecepatan putaran berbeda.
 \end{enumerate}
 
 \subsubsection{Perangkat Keras}
 Pada tahap ini akan dilakukan metode untuk membuat kendali pada robot dari sisi pernagkat keras. Perangkat yang akan digunakan yaitu Laptop, modul \textit{bluetooth}, dan robot. 
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=1\linewidth]{"gambar/gambar perangkat keras"}
-	\caption{Blok Diagram Perangkat Keras}
+	\includegraphics[width=0.7\linewidth]{"gambar/gambar perangkat keras"}
+	\caption{Blok diagram perangkat keras}
 	\label{fig:gambar33}
 \end{figure}
 
